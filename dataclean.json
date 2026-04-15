@@ -1,0 +1,111 @@
+{
+  "office_invoices": [
+    {
+      "invoice_id": "OFF-2024-04",
+      "billing_period": "April 2024",
+      "vendor": "Office Supplies Co.",
+      "total_amount": 215.50,
+      "currency": "EUR",
+      "status": "Paid"
+    },
+    {
+      "invoice_id": "OFF-2024-05",
+      "billing_period": "May 2024",
+      "vendor": "Office Supplies Co.",
+      "total_amount": 189.20,
+      "currency": "EUR",
+      "status": "Paid"
+    },
+    {
+      "invoice_id": "OFF-2024-07",
+      "billing_period": "July 2024",
+      "vendor": "Office Supplies Co.",
+      "total_amount": 342.10,
+      "currency": "EUR",
+      "status": "Pending"
+    },
+    {
+      "invoice_id": "OFF-2024-10",
+      "billing_period": "October 2024",
+      "vendor": "Office Supplies Co.",
+      "total_amount": 275.00,
+      "currency": "EUR",
+      "status": "Paid"
+    }
+  ],
+  "water_consumption_reports": [
+    {
+      "date": "2024-02-25",
+      "daily_consumption_m3": 5.04,
+      "hourly_consumption_L_h": 210.0,
+      "location": "Main Facility"
+    },
+    {
+      "date": "2024-02-28",
+      "daily_consumption_m3": 7.50,
+      "hourly_consumption_L_h": 312.5,
+      "location": "Main Facility"
+    },
+    {
+      "date": "2024-02-29",
+      "daily_consumption_m3": 3.35,
+      "hourly_consumption_L_h": 258.0,
+      "location": "Main Facility"
+    }
+  ],
+  "mobile_usage_indicators_24_25": [
+    { "date": "15/11/24", "group": "ASIXC1A", "mobiles_on_table": 3, "students": 20, "percentage": "15.00%" },
+    { "date": "21/11/24", "group": "ASIXC1A", "mobiles_on_table": 7, "students": 19, "percentage": "36.84%" },
+    { "date": "13/12/24", "group": "ASIXC1A", "mobiles_on_table": 11, "students": 19, "percentage": "57.89%" },
+    { "date": "09/01/25", "group": "ASIXC1A", "mobiles_on_table": 9, "students": 20, "percentage": "45.00%" },
+    { "date": "26/11/24", "group": "ASIXc1B", "mobiles_on_table": 11, "students": 21, "percentage": "52.38%" }
+  ],
+  "energy_report_january_2025_summary": {
+    "total_pv_yield_kwh": 978.83,
+    "total_consumption_kwh": 6701.38,
+    "average_self_consumption_rate": "98.12%",
+    "daily_logs": [
+      { "date": "2025-01-01", "pv_yield_kwh": 42.56, "consumption_kwh": 157.47, "export_kwh": 2.62 },
+      { "date": "2025-01-02", "pv_yield_kwh": 48.86, "consumption_kwh": 159.55, "export_kwh": 3.43 },
+      { "date": "2025-01-15", "pv_yield_kwh": 55.58, "consumption_kwh": 479.75, "export_kwh": 0.00 }
+    ]
+  },
+  "invoices": {
+    "internet_invoices": [
+      {
+        "operator": "O2",
+        "invoice_date": "04-03-2024",
+        "service_period": "Jan 18 - Feb 17",
+        "services": {
+          "fiber": "1Gb symmetrical",
+          "mobile": "200GB + Unlimited Calls"
+        },
+        "amounts": {
+          "tax_base_euro": 41.32,
+          "vat_percentage": 21,
+          "vat_euro": 8.68,
+          "total_euro": 50.00
+        },
+        "payment_entity": "CaixaBank"
+      },
+      {
+        "operator": "DIGI",
+        "invoice_month": "May 2024",
+        "services": {
+          "fiber": "1Gb (At Home)"
+        },
+        "amounts": {
+          "tax_base_euro": 24.79,
+          "vat_percentage": 21,
+          "vat_euro": 5.21,
+          "total_euro": 30.00
+        },
+        "note": "Final price."
+      }
+    ],
+    "cleaning_invoices": [
+      { "invoice_id": "N24-01-05-24", "date": "2024-05-27", "provider": "Institut Tecnologic de Barcelona", "total_amount": 454.72 },
+      { "invoice_id": "N24-06-24", "date": "2024-06-20", "provider": "Institut Tecnologic de Barcelona", "total_amount": 750.26 }
+    ]
+  }
+}

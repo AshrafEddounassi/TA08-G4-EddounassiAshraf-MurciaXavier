@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora d'Impacte Ambiental Escolar</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="header-area">
+        <div>
+            <h1>Calculadora d'Impacte Ambiental</h1>
+            <p><strong>Llegeix automàticament les dades de l'arxiu <code>dataclean.json</code></strong>.</p>
+        </div>
+        <div id="base-params-display">
+            <em>Esperant dades...</em>
+        </div>
+    </div>
+
+    <div id="alertBox" class="alert-box">
+        <strong>Atenció (CORS):</strong> Selecciona l'arxiu <code>dataclean.json</code> manualment:
+        <input type="file" id="fallbackFileInput" accept=".json" style="margin-left:10px;">
+    </div>
+    <div id="missingDataHeaderAlert" class="missing-data-alert"></div>
+
+    <div class="main-layout">
+        
+        <div class="left-column">
+            
+            <div class="box box-1">
+                <h2 id="tableTitle">1. Resultats del Càlcul (1 Any)</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th id="thIndicador">Indicador</th>
+                            <th id="thYear">Pròxim Any (12 mesos)</th>
+                            <th id="thSchool">Període Lectiu (Set-Juny)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsTable">
+                        </tbody>
+                </table>
+            </div>
+
+            <div class="box box-2">
+                <div class="header-top-row" style="margin-bottom: 5px;">
+                    <h2 style="margin:0;">2. Evolució Temporal</h2>
+                    <button id="btn3Years" class="btn-action btn-blue" onclick="toggle3YearsMode()">Representar cronograma</button>
+                </div>
+                <div class="charts-container">
+                    <div class="chart-wrapper">
+                        <canvas id="chartConsum"></canvas>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="chartCost"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="right-column">
+            
+            <div class="box box-3">
+                <div class="tips-header">
+                    <div class="header-top-row">
+                        <h2 style="margin:0;">3. 💡 Pla d'Acció</h2>
+                        <button id="btnSelectAll" class="btn-action btn-orange" onclick="toggleAllActions()">Sel. tot</button>
+                    </div>
+                    <span id="tipsSubtitle" style="font-size:0.75em; color:#666; line-height: 1.2;">Selecciona manualment o utilitza "Representar cronograma" per simular.</span>
+                </div>
+                
+                <div class="tips-grid" id="tipsGrid">
+                    <div class="tip-card">
+                        <h3>⚡ Electricitat</h3>
+                        <label><input type="checkbox" class="action-cb" data-category="elec" data-reduction="0.15"><span>Il·luminació LED (-15%)</span></label>
+                        <label><input type="checkbox" class="action-cb" data-category="elec" data-reduction="0.05"><span>Sensors presència (-5%)</span></label>
+                        <label><input type="checkbox" class="action-cb" data-category="elec" data-reduction="0.10"><span>Ajust climatització (-10%)</span></label>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h3>💧 Aigua</h3>
+                        <label><input type="checkbox" class="action-cb" data-category="water" data-reduction="0.10"><span>Airejadors a les aixetes (-10%)</span></label>
+                        <label><input type="checkbox" class="action-cb" data-category="water" data-reduction="0.10"><span>Reparació de fuites (-10%)</span></label>
+                        <label><input type="checkbox" class="action-cb" data-category="water" data-reduction="0.10"><span>Mitja càrrega a cisternes (-10%)</span></label>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h3>📄 Consumibles (€)</h3>
+                        <label><input type="checkbox" class="action-cb" data-category="paper" data-reduction="0.05"><span>Pantalles interactives (-5%)</span></label>
+                        <label><input type="checkbox" class="action-cb" data-category="paper" data-reduction="0.20"><span>Digitalització total (-20%)</span></label>
+                        <label><input type="checkbox" class="action-cb" data-category="paper" data-reduction="0.05"><span>Reciclatge ofimàtic (-5%)</span></label>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h3>🧹 Neteja (€)</h3>
+                        <label><input type="checkbox" class="action-cb" data-category="clean" data-reduction="0.15"><span>Dosificació automàtica (-15%)</span></label>
+                        <label><input type="checkbox" class="action-cb" data-category="clean" data-reduction="0.10"><span>Protocols de dilució (-10%)</span></label>
+                        <label><input type="checkbox" class="action-cb" data-category="clean" data-reduction="0.05"><span>Baietes de microfibra (-5%)</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box box-4">
+                <h2 style="margin:0;">4. 📅 Fases del Cronograma</h2>
+                <div class="timeline">
+                    <div class="time-step">
+                        <div class="time-badge">Any 1 (-10%)</div>
+                        <ul>
+                            <li>Ajust clima (21º/25º)</li>
+                            <li>Protocols de dilució neteja</li>
+                            <li>Ús mitja càrrega cisternes</li>
+                        </ul>
+                    </div>
+                    <div class="time-step">
+                        <div class="time-badge">Any 2 (-20%)</div>
+                        <ul>
+                            <li>Digitalització zero paper</li>
+                            <li>Reparació micro-fuites</li>
+                            <li>Dosificació automàtica</li>
+                        </ul>
+                    </div>
+                    <div class="time-step">
+                        <div class="time-badge">Any 3 (-30%)</div>
+                        <ul>
+                            <li>Instal·lació de llums LED</li>
+                            <li>Sensors de presència</li>
+                            <li>Airejadors a la xarxa</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
